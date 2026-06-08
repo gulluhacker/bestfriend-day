@@ -162,3 +162,136 @@ window.innerHeight
 );
 
 });
+
+// ==========================
+// Floating Hearts
+// ==========================
+
+function createHeart(){
+
+const heart = document.createElement("div");
+
+heart.innerHTML = "💖";
+
+heart.style.position = "fixed";
+heart.style.left = Math.random()*100 + "vw";
+heart.style.bottom = "-20px";
+heart.style.fontSize = (20 + Math.random()*25) + "px";
+heart.style.pointerEvents = "none";
+heart.style.zIndex = "999";
+
+document.body.appendChild(heart);
+
+let pos = 0;
+
+const move = setInterval(()=>{
+
+pos++;
+
+heart.style.bottom = pos + "px";
+heart.style.opacity = 1 - (pos/800);
+heart.style.transform =
+`rotate(${pos}deg)`;
+
+if(pos > 800){
+
+clearInterval(move);
+heart.remove();
+
+}
+
+},15);
+
+}
+
+setInterval(createHeart,1200);
+
+
+// ==========================
+// Sparkles
+// ==========================
+
+function createSparkle(){
+
+const sparkle =
+document.createElement("div");
+
+sparkle.innerHTML = "✨";
+
+sparkle.style.position = "fixed";
+
+sparkle.style.left =
+Math.random()*100 + "vw";
+
+sparkle.style.top =
+Math.random()*100 + "vh";
+
+sparkle.style.zIndex = "999";
+
+sparkle.style.pointerEvents = "none";
+
+sparkle.style.fontSize =
+(10 + Math.random()*15) + "px";
+
+document.body.appendChild(sparkle);
+
+setTimeout(()=>{
+sparkle.remove();
+},2000);
+
+}
+
+setInterval(createSparkle,500);
+
+
+// ==========================
+// Shooting Stars
+// ==========================
+
+function createShootingStar(){
+
+const star =
+document.createElement("div");
+
+star.style.position="fixed";
+
+star.style.width="120px";
+star.style.height="2px";
+
+star.style.background="white";
+
+star.style.top=
+Math.random()*40+"vh";
+
+star.style.left="-150px";
+
+star.style.transform=
+"rotate(-25deg)";
+
+star.style.boxShadow=
+"0 0 15px white";
+
+star.style.zIndex="1";
+
+document.body.appendChild(star);
+
+let x=-150;
+
+const shoot=setInterval(()=>{
+
+x+=15;
+
+star.style.left=x+"px";
+
+if(x>window.innerWidth+200){
+
+clearInterval(shoot);
+star.remove();
+
+}
+
+},10);
+
+}
+
+setInterval(createShootingStar,5000);
